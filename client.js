@@ -17,7 +17,7 @@ const PaymentService =
   grpc.loadPackageDefinition(packageDefinition).PaymentService;
 
 const client = new PaymentService(
-  "localhost:3002",
+  "13.215.201.3:3002",
   grpc.credentials.createInsecure()
 );
 

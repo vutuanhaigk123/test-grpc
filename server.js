@@ -24,8 +24,10 @@ server.addService(paymentsProto.PaymentService.service, {
   },
 });
 
+const serverPort = process.env.PORT || 3002;
+
 server.bindAsync(
-  "0.0.0.0:3002",
+  `0.0.0.0:${serverPort}`,
   grpc.ServerCredentials.createInsecure(),
   (error, port) => {
     if (error) {
