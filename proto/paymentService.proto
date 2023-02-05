@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message PaymentInfo {
+    string id = 1;
+}
+
+message PaymentInfoList {
+    repeated PaymentInfo paymentsInfoList = 1;
+}
+
+message Empty {}
+
+service PaymentService {
+    rpc GetAllPaymentsInfo(Empty) returns (PaymentInfoList) {}
+}
