@@ -21,9 +21,19 @@ const client = new PaymentService(
   grpc.credentials.createInsecure()
 );
 
-client.getAllPaymentsInfo({}, (error, resp) => {
-  if (error) throw error;
-  resp.paymentsInfoList.forEach((paymentInfo) => {
-    console.log(paymentInfo);
+async function getAllPaymentsInfo() {
+  return new Promise((resolve, reject) => {
+    client.getAllPaymentsInfo({}, (error, resp) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve(resp);
+    });
   });
+}
+
+const resp = await getAllPaymentsInfo();
+resp.paymentsInfoList.forEach((paymentInfo) => {
+  console.log(paymentInfo);
 });
